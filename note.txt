@@ -1,0 +1,26 @@
+int appid,int app_category ,int stage ,int driver , int platform , int app_database, int type,int data_confidentiality,int workload_variations
+
+
+
+@RequestMapping(value = "/addAttribute" , method=RequestMethod.POST)
+	public String addwindow(int app_stage,int app_driver,String stage){
+		System.out.println("stage"+app_stage+"driver "+app_driver+" value "+stage);
+		return "display_application_window";
+	}
+
+
+
+
+public String addwindow(String appid,int app_category ,int stage ,int driver , int platform , int app_database, int type,int data_confidentiality,int workload_variations
+){
+		System.out.println("appid"+appid);
+		System.out.println("appcategory"+app_category);
+		System.out.println("stage"+stage);
+		System.out.println("driver"+driver);
+		System.out.println("app_platform"+platform);
+		System.out.println("database"+app_database);
+		System.out.println("app_type"+type);
+		System.out.println("data_con"+data_confidentiality);
+		System.out.println("workload var"+workload_variations);
+		return "display_application_window";
+	}
