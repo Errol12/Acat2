@@ -1,0 +1,9 @@
+https://material.angularjs.org/latest/api/directive/mdSelect
+
+https://github.com/angular/material/issues/2242
+
+http://codepen.io/1kohei1/pen/gpXdjQ
+
+http://codepen.io/boo0330/pen/EjOWgg
+
+http://stackoverflow.com/questions/36687047/angular-material-md-select-option-group-default-selected-values
