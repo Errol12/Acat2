@@ -1,0 +1,232 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+      <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>ACAT - New Application </title>
+
+    <!-- Bootstrap -->
+ <!-- button css -->
+    <link href="<c:url value="/resource/css/button.css"/>" rel="stylesheet" type="text/css" />
+     <link href="<c:url value="/resource/css/bootstrap.min.css"/>" rel="stylesheet" type="text/css" />
+  
+    <!-- Font Awesome -->
+    <link href="<c:url value="/resource/css/font-awesome.min.css"/>" rel="stylesheet" type="text/css" />
+    <link href="<c:url value="/resource/css/font-awesome.css"/>" rel="stylesheet" type="text/css" />
+
+    <!-- NProgress -->
+    <link href="<c:url value="/resource/css/nprogress.css"/>" rel="stylesheet" type="text/css" />
+ 
+    <!-- Custom Theme Style -->
+    <link href="<c:url value="/resource/css/custom.min.css"/>" rel="stylesheet" type="text/css" />
+    <!-- iCheck -->
+    <link href="<c:url value="/resource/css/green.css"/>" rel="stylesheet" type="text/css" />
+<link href="<c:url value="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css"/>" rel="stylesheet"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
+      <script type="text/javascript">    
+         angular.module('firstApplication', ['ngMaterial']).controller('chipController', chipController);
+         function chipController ($scope) {
+             var self = this;
+             self.readonly = false;
+             // Lists of fruit names and Vegetable objects
+             self.fruitNames = ['Apple', 'Banana', 'Orange'];
+             self.roFruitNames = angular.copy(self.fruitNames);
+             self.tags = [];
+             
+             
+          }
+         </script>
+  </head>
+
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">
+        <div class="col-md-3 left_col">
+          <div class="left_col scroll-view">
+            <div class="navbar nav_title" style="border: 0;">
+              <a href="index.html" class="site_title"><i class="glyphicon glyphicon-cloud-upload"></i> <span>ACAT</span></a>
+            </div>
+
+            <div class="clearfix"></div>
+            <br />
+
+            <!-- sidebar menu -->
+            <!--#include file="common/sidebar.shtml" -->
+             <%@ include file="sidebar.jsp" %>
+              
+            <!-- /sidebar menu -->
+
+            <!-- /menu footer buttons -->
+            
+            <!-- /menu footer buttons -->
+          </div>
+        </div>
+
+        <!-- top navigation -->
+        <!--#include file="common/topnavigation.shtml" -->
+         <%@ include file="topnavigation.jsp" %>
+            
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+          <div class="">
+            <div class="page-title">
+              <div class="title_left">
+                <h3>Applications</h3>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Import Application</h2>
+                    
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+
+                    <form class="form-horizontal form-label-left" novalidate action="scan1" method="post" enctype="multipart/form-data">
+                       
+                  <div class="item form-group">
+											<label class="control-label col-md-3 col-sm-3 col-xs-12"
+												for="name">Client Name <span class="required">*</span>
+											</label>
+											<div class="col-md-6 col-sm-6 col-xs-12">
+												<select id="application_category" name="clientid" id="clientid"
+													required="" class="select2_single form-control"
+													tabindex="-1">
+
+													<c:forEach items="${clientList}" var="cat">
+														<option value="${cat.clientid}">${cat.clientname}</option>
+													</c:forEach>
+												</select>
+
+
+
+											</div>
+										</div>
+                       <div class="item form-group">
+                       
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Select a file to upload <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                           
+                           <label class="btn btn-default btn-file">
+   			 Browse <input type="file" name="file" id="fileChooser">
+			</label>
+ 
+                           
+                        </div>
+                      </div>
+                     
+					  
+                    
+                    
+                      <div class="ln_solid"></div>
+                      <div class="form-group">
+                        <div class="col-md-6 col-md-offset-3">
+                         
+                          <button id="send" type="submit" class="btn btn-success">Submit</button>
+                           <button type="submit" class="btn btn-primary">Cancel</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <body ng-app="firstApplication" ng-cloak>
+      <md-toolbar class="md-warn">
+         <div class="md-toolbar-tools">
+            <h2 class="md-flex">HTML 5</h2>
+         </div>
+      </md-toolbar>
+      <md-content flex layout-padding>
+         <p>HTML5 is the next major revision of the HTML standard superseding HTML 4.01, XHTML 1.0, and XHTML 1.1. HTML5 is a standard for structuring and presenting content on the World Wide Web.</p>
+         <p>HTML5 is a cooperation between the World Wide Web Consortium (W3C) and the Web Hypertext Application Technology Working Group (WHATWG).</p>
+         <p>The new standard incorporates features like video playback and drag-and-drop that have been previously dependent on third-party browser plug-ins such as Adobe Flash, Microsoft Silverlight, and Google Gears.</p>
+      </md-content>
+     <div ng-controller="chipController as ctrl" layout="column" ng-cloak>
+<md-chips ng-model="ctrl.fruitNames" readonly="ctrl.readonly"></md-chips></div>
+   </body>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+            <%@include file="footer.jsp" %>
+        <!--#include file="common/footer.shtml" -->
+        <!-- /footer content -->
+        
+      </div>
+    </div>
+
+      <!-- jQuery -->
+    <script src="<c:url value="/resource/js1/jquery.min.js"/>"></script>
+    <!-- Bootstrap -->
+    <script src="<c:url value="/resource/js1/bootstrap.min.js"/>"></script>
+    
+    <!-- FastClick -->
+    <script src="<c:url value="/resource/js1/fastclick.js"/>"></script>
+ 
+    <!-- NProgress -->
+    <script src="<c:url value="/resource/js1/nprogress.js"/>"></script>
+    <!-- validator -->
+
+<script src="<c:url value="/resource/js1/validator.js"/>"></script>
+    <!-- Custom Theme Scripts -->
+
+ <script src="<c:url value="/resource/js/custom.min.js"/>"></script>
+
+    <!--Page Specific CSS-->
+    <!-- Select2 -->
+     <script src="<c:url value="/resource/js1/select2.full.min.js"/>"></script>
+
+
+    <!-- validator -->
+    <script>
+      // initialize the validator function
+      validator.message.date = 'not a real date';
+
+      // validate a field on "blur" event, a 'select' on 'change' event & a '.reuired' classed multifield on 'keyup':
+      $('form')
+        .on('blur', 'input[required], input.optional, select.required', validator.checkField)
+        .on('change', 'select.required', validator.checkField)
+        .on('keypress', 'input[required][pattern]', validator.keypress);
+
+      $('.multi.required').on('keyup blur', 'input', function() {
+        validator.checkField.apply($(this).siblings().last()[0]);
+      });
+
+      $('form').submit(function(e) {
+        e.preventDefault();
+        var submit = true;
+
+        // evaluate the form using generic validaing
+        if (!validator.checkAll($(this))) {
+          submit = false;
+        }
+
+        if (submit)
+          this.submit();
+
+        return false;
+      });
+    </script>
+    <!-- /validator -->
+  </body>
+</html>
